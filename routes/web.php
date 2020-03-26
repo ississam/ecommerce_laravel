@@ -12,7 +12,8 @@
 */
 use App\Http\Controllers\PayementController;
 use App\Http\Controllers\CartController;
-
+use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,6 +22,7 @@ Route::get('/', function () {
 
 Route::get('/boutique','ProductController@index')->name('products.index');
 Route::get('boutique/{slug}','ProductController@show')->name('products.show');
+Route::get('/search','ProductController@search')->name('products.search');
 Route::post('/panier/ajouter','CartController@store')->name('cart.store');
 // Route::get('/videpanier', function(){   On a plus besoin a cette route
 //      Cart::destroy();
