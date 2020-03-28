@@ -97,7 +97,7 @@ public function store(Request $request)
         }
 
         $order->products = serialize($products);
-        $order->user_id = 15;
+        $order->user_id = Auth()->user()->id;
         $order->save();
 
         if ($data['paymentIntent']['status'] === 'succeeded') {

@@ -3,6 +3,4 @@
     <input type="text" name="sr" class="form-control" value="{{request()->sr ??  ''}}">
     </div>
 <button type="submit" class="btn btn-info mr-1"><i class="fa fa-search" aria-hidden="true"></i></i></button>
-
-
 </form>
