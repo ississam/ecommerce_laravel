@@ -48,8 +48,6 @@ Route::get('/merci', 'PayementController@thankyou')->name('payement.thankyou');
 
 
 
-
-
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
