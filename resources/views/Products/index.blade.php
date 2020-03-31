@@ -18,6 +18,7 @@
         </div>
         <div class="col-auto d-none d-lg-block">
           <img src="{{ asset('storage/' . $product->image)}}" alt="">
+
         </div>
       </div>
     </div>

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Product;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-//  use Cart;
 
 class CartController extends Controller
 {
@@ -96,11 +96,15 @@ class CartController extends Controller
             return response()->json(['error' => 'Cart Quantity Has Not Been Updated']);
         }
 
+        if ($data['qty'] > $data['stock']) {
+            Session::flash('error', 'La quantité de ce produit n\'est pas disponible.');
+            return response()->json(['error' => 'Product Quantity Not Available']);
+        }
+
         Cart::update($rowId, $data['qty']);
 
         Session::flash('success', 'La quantité du produit est passée à ' . $data['qty'] . '.');
         return response()->json(['success' => 'Cart Quantity Has Been Updated']);
-
     }
 
     /**

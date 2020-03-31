@@ -90,6 +90,8 @@
     <a href="#">Back to top</a>
   </p>
 </footer>
+<script src="{{ asset('js/app.js') }}"></script>
 @yield('ex-js')
+@yield('extra-js')
 </body>
 </html>

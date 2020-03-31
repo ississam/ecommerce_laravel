@@ -89,7 +89,7 @@ form.addEventListener('submit', function(ev) {
           var token=document.querySelector('meta[name="csrf-token"]').getAttribute('content');
                 var form = document.getElementById('paye-form');
                 var url = form.action;
-                var redirect='/merci';
+
                 fetch(
                 url,
                 {
@@ -103,7 +103,15 @@ form.addEventListener('submit', function(ev) {
                         body: JSON.stringify({
                             paymentIntent: paymentIntent
                         })
-                    }).then((data) => {console.log(data)
+                    }).then((data) => {
+                        if (data.status===400)
+                        {
+                            var redirect='/boutique';
+
+                        } else {
+                            var redirect='/merci';
+                        }
+                    //     console.log(data)
                     window.location.href=redirect;
 
                 }).catch((error)=>{console.log(error)})

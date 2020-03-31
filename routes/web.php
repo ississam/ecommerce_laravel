@@ -32,10 +32,10 @@ Route::get('/search','ProductController@search')->name('products.search');
 
 //////////// ces routes de panier sont affectes au midelware, onpeut pas y acceder à ces routestant qu'on est pas connecté
 Route::group(['middleware' => ['auth']], function () {
-    Route::post('/panier/ajouter','CartController@store')->name('cart.store');
-    Route::get('/panier','CartController@index')->name('cart.index');
-    Route::patch('/panier/{rwId}','CartController@update')->name('cart.update');
-    Route::delete('/panier/{rwId}', 'CartController@destroy')->name('cart.destroy');
+    Route::get('/panier', 'CartController@index')->name('cart.index');
+    Route::post('/panier/ajouter', 'CartController@store')->name('cart.store');
+    Route::patch('/panier/{rowId}', 'CartController@update')->name('cart.update');
+    Route::delete('/panier/{rowId}', 'CartController@destroy')->name('cart.destroy');
 });
 
 
